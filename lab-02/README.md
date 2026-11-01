@@ -1,5 +1,8 @@
 # Lab 02: SQLite Database and CRUD Routes
 
+
+**Live Deployment:** https://bdf-lab-02-new.onrender.com/books/
+
 ## Student Details
 
 * **Name:** Gajjela Jyoshna
@@ -8,6 +11,7 @@
 * **Course:** Backend Development Fundamentals
 * **Year:** II
 * **Term:** II
+  
 
 ## Objective
 
@@ -68,14 +72,25 @@ The database contains 10 initial book records.
 
 ## Postman Testing Screenshots
 
-Screenshots of all five CRUD operations are available in the `screenshots` folder.
+## Postman Testing Screenshots
 
-1. `get-all-books.png`
-2. `get-single-book.png`
-3. `post-add-book.png`
-4. `put-update-book.png`
-5. `delete-book.png`
-6. `verify-books.png`
+### 1. GET All Books
+![GET All Books](screenshots/get-all-books.png)
+
+### 2. GET Single Book
+![GET Single Book](screenshots/get-single-book.png)
+
+### 3. POST Add Book
+![POST Add Book](screenshots/post-add-book.png)
+
+### 4. PUT Update Book
+![PUT Update Book](screenshots/put-update-book.png)
+
+### 5. DELETE Book
+![DELETE Book](screenshots/delete-book.png)
+
+### 6. Verify Books
+![Verify Books](screenshots/verify-books.png)
 
 ## Parameterised Queries
 
