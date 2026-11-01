@@ -84,3 +84,17 @@ SQL queries use `?` placeholders to safely pass user-provided values and reduce 
 ## Conclusion
 
 Successfully connected an Express.js server to an SQLite database and implemented all five CRUD operations. Tested the API endpoints using Postman and verified the database changes.
+
+## SQLite Database Verification
+
+The SQLite database was opened and inspected using DB Browser for SQLite.
+
+The `book` table was verified using SQL queries:
+
+```sql
+SELECT * FROM book;
+
+SELECT COUNT(*) AS total_books FROM book;
+```
+
+Screenshots of the database table and SQL query results are available in the `screenshots` folder.
