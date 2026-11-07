@@ -1,0 +1,28 @@
+{
+  "name": "lab-03",
+  "version": "1.0.0",
+  "description": "REST API with Search, Sorting, Pagination, Filtering and Validation using SQLite",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "dev": "nodemon index.js"
+  },
+  "keywords": [
+    "REST API",
+    "Express",
+    "SQLite",
+    "Node.js",
+    "CRUD"
+  ],
+  "author": "Gajjela Jyoshna",
+  "license": "ISC",
+  "type": "commonjs",
+  "dependencies": {
+    "express": "^5.3.0",
+    "sqlite": "^5.1.1",
+    "sqlite3": "^5.1.7"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.14"
+  }
+}
