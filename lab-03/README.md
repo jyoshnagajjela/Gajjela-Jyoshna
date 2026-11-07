@@ -1,99 +1,228 @@
-# BDF Lab 03 – REST API with Advanced Features
+# BDF Lab 03 – REST API Development
 
-## Objective
-To develop a REST API using Node.js, Express.js and SQLite with search, sorting, pagination, price filtering, input validation and error handling.
+## 1. Project Overview
 
-## Technologies Used
-- Node.js
-- Express.js
-- SQLite
-- SQLite3
-- Postman
+This project focuses on developing a REST API using Node.js, Express.js and SQLite for managing book records.
 
-## Project Setup
+The application supports CRUD (Create, Read, Update and Delete) operations along with additional features such as partial title searching, sorting, pagination, price filtering, input validation and error handling.
 
-1. Install dependencies:
+## 2. Project Links
 
-   npm install
+- **GitHub Repository:** https://github.com/jyoshnagajjela/Gajjela-Jyoshna/tree/main/lab-03
+- **Live Deployment:** https://bdf-lab-03.onrender.com/books
 
-2. Start the server:
+## 3. Objectives
 
-   npm run dev
+- Develop REST API endpoints using Express.js.
+- Implement CRUD operations for book records.
+- Search books using partial title matching.
+- Sort books in ascending and descending order.
+- Implement pagination using limit and offset.
+- Filter books using minimum and maximum prices.
+- Validate user inputs.
+- Handle errors using appropriate HTTP status codes.
+- Test API endpoints using Postman.
+- Deploy the REST API using Render.
 
-3. Server runs at:
+## 4. Technologies Used
 
-   http://localhost:3000
+| Technology | Purpose |
+|---|---|
+| Node.js | JavaScript runtime environment |
+| Express.js | REST API development |
+| SQLite | Database management |
+| SQLite3 | SQLite database connectivity |
+| JavaScript | Application logic |
+| Postman | API testing |
+| Git and GitHub | Version control and code hosting |
+| Render | Application deployment |
 
-## API Endpoints
+## 5. Project Structure
 
-### 1. Get All Books
-GET /books
+```text
+lab-03/
+│
+├── screenshots/
+├── .gitignore
+├── .node-version
+├── index.js
+├── package.json
+├── package-lock.json
+├── README.md
+└── seed.js
+```
 
-### 2. Get a Single Book
-GET /books/:bookId
+## 6. Installation and Execution
 
-### 3. Add a New Book
-POST /books
+### Step 1: Clone the Repository
 
-Example request body:
+```bash
+git clone https://github.com/jyoshnagajjela/Gajjela-Jyoshna.git
+```
 
-{
-  "title": "The Great Gatsby",
-  "author": "F. Scott Fitzgerald",
-  "price": 350,
-  "pages": 200
-}
+### Step 2: Navigate to Lab 03
 
-### 4. Update a Book
-PUT /books/:bookId
+```bash
+cd Gajjela-Jyoshna/lab-03
+```
 
-### 5. Delete a Book
-DELETE /books/:bookId
+### Step 3: Install Dependencies
 
-## Advanced Features
+```bash
+npm install
+```
 
-### Search
+### Step 4: Initialise the Database
+
+```bash
+node seed.js
+```
+
+This creates the SQLite database and inserts sample book records.
+
+**Note:** The seed script clears existing book records before inserting the sample data.
+
+### Step 5: Start the Server
+
+```bash
+npm run dev
+```
+
+The local server runs at:
+
+```text
+http://localhost:3000
+```
+
+## 7. API Endpoints
+
+| HTTP Method | Endpoint | Description |
+|---|---|---|
+| GET | `/books` | Retrieve all books |
+| GET | `/books/:bookId` | Retrieve a specific book |
+| POST | `/books` | Add a new book |
+| PUT | `/books/:bookId` | Update an existing book |
+| DELETE | `/books/:bookId` | Delete a book |
+
+## 8. Additional API Features
+
+### A. Search by Title
+
+The `search_q` parameter supports partial title searching.
+
+Example:
+
+```text
 GET /books?search_q=atomic
+```
 
-Searches books using part of the title.
+### B. Sorting
 
-### Sorting
+The `order_by` and `order` parameters are used to sort book records.
+
+Example:
+
+```text
 GET /books?order_by=price&order=DESC
+```
 
-Sorts books by price in descending order.
+- ASC – Ascending order
+- DESC – Descending order
 
-### Pagination
+### C. Pagination
+
+The `limit` and `offset` parameters are used to retrieve records in smaller groups.
+
+Example:
+
+```text
 GET /books?limit=5&offset=0
+```
 
-Returns five books starting from the first record.
+- `limit` specifies the maximum number of records.
+- `offset` specifies the number of records to skip.
 
-### Price Filtering
-GET /books?min_price=300&max_price=450
+### D. Price Filtering
 
-Returns books within the specified price range.
+The `min_price` and `max_price` parameters filter books based on their prices.
 
-## Input Validation
+Example:
+
+```text
+GET /books?min_price=300&max_price=400
+```
+
+### E. Combining Query Parameters
+
+Multiple query parameters can be combined in a single API request.
+
+Example:
+
+```text
+GET /books?search_q=the&min_price=200&max_price=500&order_by=price&order=ASC&limit=5&offset=0
+```
+
+## 9. Input Validation and Error Handling
+
+The API validates incoming data before creating book records.
 
 - Title is required.
 - Author is required.
 - Price must be a valid number.
-- Invalid input returns HTTP 400.
+- Invalid input returns `400 Bad Request`.
+- Missing records return `404 Not Found`.
+- Successful creation returns `201 Created`.
+- Successful retrieval returns `200 OK`.
+- Successful update returns `200 OK`.
+- Successful deletion returns `200 OK`.
 
-## HTTP Status Codes
+## 10. API Testing
 
-- 200 – Successful request
-- 201 – Book created successfully
-- 400 – Invalid input
-- 404 – Book not found
+All API functionalities were tested using Postman.
 
-## Debugging
+The following test cases were performed:
 
-The project covers:
-- Resolving port conflicts.
-- Correcting import paths.
-- Fixing database table-name errors.
-- Using await for asynchronous database operations.
+1. Retrieve all books.
+2. Search books by partial title.
+3. Sort books by price.
+4. Retrieve books using pagination.
+5. Filter books by price range.
+6. Add a new book.
+7. Validate POST requests with missing fields.
+8. Update an existing book.
+9. Delete an existing book.
+10. Retrieve a non-existing book and verify the 404 response.
 
-## Conclusion
+Testing screenshots are available in the `screenshots` folder.
 
-This lab demonstrates how to build an advanced REST API using Express.js and SQLite. It includes CRUD operations, search, sorting, pagination, filtering, validation and debugging.
+## 11. Deployment
+
+The REST API was deployed using Render.
+
+**Live API Endpoint:**
+
+```text
+PASTE YOUR ACTUAL RENDER DEPLOYMENT URL HERE/books
+```
+
+The deployed API can be accessed to retrieve book records and test the available endpoints.
+
+## 12. Debugging and Error Handling
+
+The following development issues were considered during implementation:
+
+- Port conflicts while running the server.
+- Incorrect module import paths.
+- SQLite table name mismatches.
+- Missing `await` statements in asynchronous database operations.
+- Invalid query parameters.
+- Missing book records.
+- Invalid input during POST requests.
+
+## 13. Conclusion
+
+This lab provided practical experience in developing REST APIs using Node.js, Express.js and SQLite.
+
+It helped in understanding CRUD operations, HTTP methods, query parameters, searching, sorting, pagination, price filtering, input validation and error handling.
+
+The project also provided hands-on experience in testing APIs using Postman, managing source code through GitHub and deploying an application using Render.
